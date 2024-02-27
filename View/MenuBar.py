@@ -6,9 +6,11 @@ def InitConfigureMenuBar(app):
     
     AddProjectMenu(app)
     AddObjectsMenu(app)
+    AddAbacusMenu(app)
     
     app.MenuBar.add_cascade(label="Projeto", menu=app.ProjectMenu, underline=0)
     app.MenuBar.add_cascade(label="Componentes", menu=app.ObjectsMenu, underline=0)
+    app.MenuBar.add_cascade(label="Abacus", menu=app.AbacusMenu, underline=0)
     
     UpdateMenuConfig(app)
     
@@ -21,7 +23,8 @@ def UpdateMenuConfig(app):
         app.ProjectMenu.entryconfigure('Abrir Projeto', state=tk.DISABLED)
         app.ProjectMenu.entryconfigure('Fechar Projeto', state=tk.DISABLED)
         app.MenuBar.entryconfigure('Componentes', state=tk.DISABLED)
-        
+
+#-------------------------------------------------------       
 def AddProjectMenu(app):
     app.ProjectMenu = tk.Menu(app.MenuBar, tearoff=0)   
     app.ProjectMenu.add_command(label="Criar Projeto", 
@@ -30,7 +33,7 @@ def AddProjectMenu(app):
     app.ProjectMenu.add_command(label="Fechar Projeto")
     app.ProjectMenu.add_separator()
     app.ProjectMenu.add_command(label="Fechar", command=app.destroy)
-
+#-------------------------------------------------------
 def AddObjectsMenu(app):
     app.ObjectsMenu = tk.Menu(app.MenuBar, tearoff=0)
     
@@ -49,3 +52,7 @@ def AddLayerMenu(app):
     app.LayerMenu = tk.Menu(app.ObjectsMenu, tearoff=0)
     app.LayerMenu.add_command(label="Adicionar")
     app.LayerMenu.add_command(label="Listar")
+#-------------------------------------------------------
+def AddAbacusMenu(app):
+    app.AbacusMenu = tk.Menu(app.MenuBar, tearoff=0)
+    app.AbacusMenu.add_command(label="Exemplo")
