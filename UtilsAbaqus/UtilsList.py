@@ -2,29 +2,29 @@ class LinqList():
     def __init__(self, array: list):
         self.array = array
 
-    def FilterByValues(self, values_to_search: list, apply: bool = False):
+    def filter_by_values(self, values_to_filter: list, apply: bool = False):
         if (apply):
-            self.array = FilterByValues(self.array, values_to_search)
+            self.array = filter_by_values(self.array, values_to_filter)
             return self.array
-        return FilterByValues(self.array, values_to_search)
+        return filter_by_values(self.array, values_to_filter)
     
-    def FilterValuesToRemove(self, values_to_search: list, apply: bool = False):
+    def filter_to_remove(self, values_to_remove: list, apply: bool = False):
         if (apply):
-            self.array = FilterValuesToRemove(self.array, values_to_search)
+            self.array = filter_to_remove(self.array, values_to_remove)
             return self.array
-        return FilterValuesToRemove(self.array, values_to_search)
+        return filter_to_remove(self.array, values_to_remove)
     
-    def AllIn(self, ) => bool:
+    def all_in(self, values_to_verify: list):
+        pass
 
+def filter_by_values(list_to_search: list, values_to_filter: list):
+    return [i for i in list_to_search if i in values_to_filter]
 
-def FilterByValues(ValuesList, ValuesToSearch):
-    return [i for i in ValuesList if i in ValuesToSearch]
+def filter_to_remove(list_to_search: list, ValuesToSearch: list):
+    return [i for i in list_to_search if i not in ValuesToSearch]
 
-def FilterValuesToRemove(ValuesList, ValuesToSearch):
-    return [i for i in ValuesList if i not in ValuesToSearch]
-
-def AllIn(ValuesList, ValuesToSearch):
-    return len(SearchValuesInList(ValuesList, ValuesToSearch)) == len(ValuesList)
+def all_in(value_list: list, list_check: list):
+    return len(filter_by_values(list_check, value_list)) == len(list_check)
 
 def AllNotIn(ValuesList, ValuesToSearch):
     return len(SearchValuesNotInList(ValuesList, ValuesToSearch)) == len(ValuesList)
