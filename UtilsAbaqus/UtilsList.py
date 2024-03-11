@@ -14,33 +14,33 @@ class LinqList():
             return self.array
         return filter_to_remove(self.array, values_to_remove)
     
-    def all_in(self, values_to_verify: list):
-        pass
-
+    def all_in(self, values_to_verify: list) -> bool:
+        return all_in(self.array, values_to_verify)
+    
+    def all_not_in(self, values_to_verify: list) -> bool:
+        return all_not_in(self.array, values_to_verify)
+#_______________________________________________________________________________#
+    
 def filter_by_values(list_to_search: list, values_to_filter: list):
     return [i for i in list_to_search if i in values_to_filter]
 
-def filter_to_remove(list_to_search: list, ValuesToSearch: list):
-    return [i for i in list_to_search if i not in ValuesToSearch]
+def filter_to_remove(list_to_search: list, values_to_remove: list):
+    return [i for i in list_to_search if i not in values_to_remove]
 
-def all_in(value_list: list, list_check: list):
+def all_in(value_list: list, list_check: list) -> bool:
     return len(filter_by_values(list_check, value_list)) == len(list_check)
 
-def AllNotIn(ValuesList, ValuesToSearch):
-    return len(SearchValuesNotInList(ValuesList, ValuesToSearch)) == len(ValuesList)
+def all_not_in(value_list: list, list_check: list) -> bool:
+    return len(filter_to_remove(list_check, value_list)) == len(list_check)
 
-def AllIsTrue(BoolList):
-    return AllIn(BoolList, [True])
+def all_is_true(bool_list: list) -> bool:
+    return len(bool_list) == len(filter_by_values(bool_list, [True]))
 
-def AllIsFalse(BoolList):
-    return AllIn(BoolList, [False])
+def all_is_false(bool_list: list) -> bool:
+    return len(bool_list) == len(filter_by_values(bool_list, [False]))
 
-def AnyIn(ValuesList, ValuesToSearch):
-    return len(SearchValuesInList(ValuesList, ValuesToSearch)) > 0
+def any_in(list_to_search: list, values_to_filter: list):
+    return len(filter_by_values(list_to_search, values_to_filter)) > 0
 
-def AnyNotIn(ValuesList, ValuesToSearch):
-    return len(SearchValuesNotInList(ValuesList, ValuesToSearch)) > 0
-
-
-teste = LinqList([1, 2, 2, 3, 4])
-print(teste.FilterListByValues([2, 3]))
+def any_not_in(list_to_search: list, values_to_remove: list):
+    return len(filter_to_remove(list_to_search, values_to_remove)) > 0
